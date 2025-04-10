@@ -34,13 +34,12 @@ class Command(BaseCommand):
         start_time = time.time()
         
         try:
-            # Clear existing data if not keeping it
             if not keep_existing:
                 self.stdout.write('Clearing existing data...')
                 PageYear.objects.all().delete()
                 self.stdout.write('Existing data cleared.')
             
-            # Determine if the file is gzipped based on extension
+        
             is_gzipped = file_path.endswith('.gz')
             open_func = gzip.open if is_gzipped else open
             mode = 'rt' if is_gzipped else 'r'
@@ -142,7 +141,6 @@ class Command(BaseCommand):
                 ON CONFLICT (page_id) DO UPDATE SET year = EXCLUDED.year
             ''')
             
-            # Drop the temporary table
             cursor.execute('''
                 DROP TABLE temp_page_years
             ''')

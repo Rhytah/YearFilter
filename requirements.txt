@@ -2,3 +2,6 @@ Django==4.2.11
 djangorestframework==3.14.0
 gunicorn==21.2.0
 mysqlclient==2.2.1
+pytest==7.4.0
+pytest-django==4.5.2
+pytest-cov==4.1.0

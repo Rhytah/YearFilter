@@ -257,22 +257,3 @@ Use the Django management command to run database maintenance tasks:
 ```bash
 python manage.py dbshell
 ```
-
-## Security Considerations
-
-- Always use HTTPS in production
-- Don't commit sensitive data like the Django secret key to version control
-- Use environment variables for configuration
-- Keep the Django installation updated
-- Apply security patches promptly
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature-name`
-3. Make your changes and commit them: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-

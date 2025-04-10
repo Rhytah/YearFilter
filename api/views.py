@@ -59,7 +59,6 @@ def year_filter(request):
             simulate_results(page_ids, year, start_year, end_year)
         )
     
-    # Process database query
     try:
         matching_page_ids = query_database(page_ids, year, start_year, end_year)
         return Response(matching_page_ids)

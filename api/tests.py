@@ -10,7 +10,6 @@ class YearFilterTests(TestCase):
     
     def setUp(self):
         """Set up test data."""
-        # Create test data
         self.page_years = [
             PageYear.objects.create(page_id=101, year=1990),
             PageYear.objects.create(page_id=102, year=1995),
@@ -22,7 +21,6 @@ class YearFilterTests(TestCase):
         
     def test_filter_by_exact_year(self):
         """Test filtering by exact year."""
-        # Test with year=1995
         response = self.client.get(
             reverse('year_filter'), 
             {'page_ids': '101,102,103,104,105', 'year': '1995'}
@@ -32,7 +30,6 @@ class YearFilterTests(TestCase):
         
     def test_filter_by_year_range(self):
         """Test filtering by year range."""
-        # Test with start_year=1995, end_year=2005
         response = self.client.get(
             reverse('year_filter'), 
             {'page_ids': '101,102,103,104,105', 'start_year': '1995', 'end_year': '2005'}
@@ -42,14 +39,11 @@ class YearFilterTests(TestCase):
         
     def test_filter_with_invalid_parameters(self):
         """Test with invalid parameters."""
-        # Test without page_ids
         response = self.client.get(
             reverse('year_filter'), 
             {'year': '1995'}
         )
         self.assertEqual(response.status_code, 400)
-        
-        # Test with both exact year and year range
         response = self.client.get(
             reverse('year_filter'), 
             {'page_ids': '101,102,103', 'year': '1995', 'start_year': '1990'}
@@ -58,7 +52,6 @@ class YearFilterTests(TestCase):
         
     def test_simulation_mode(self):
         """Test simulation mode."""
-        # Since simulation uses random, test that response is a list of integers
         response = self.client.get(
             reverse('year_filter'), 
             {'page_ids': '101,102,103,104,105', 'year': '2000', 'simulated': 'true'}
@@ -70,7 +63,6 @@ class YearFilterTests(TestCase):
             
     def test_post_request(self):
         """Test POST request."""
-        # Test with POST method
         response = self.client.post(
             reverse('year_filter'), 
             {'page_ids': '101,102,103,104,105', 'year': '1995'}
